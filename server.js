@@ -13,7 +13,7 @@ app.use(bodyParser.json());
 app.use(require('./api/routes/taskItRoutes'))
 
 mongoose.Promise = global.Promise;
-mongoose.connect('mongodb://localhost/taskIt');
+mongoose.connect(process.env.MONGO_URI);
 
 app.get('/', (req, res) => {
     res.send('Welcome to Task It API');
