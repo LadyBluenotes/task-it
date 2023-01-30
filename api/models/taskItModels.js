@@ -1,29 +1,33 @@
 const mongoose = require('mongoose');
 
 const taskSchema = new mongoose.Schema({
-  title: { // title of task
+  title: {
     type: String,
     required: true
   },
-  description: { // description of task
+  description: {
     type: String,
     required: true
   },
-  status: { // status of task
+  status: {
     type: String,
     enum: ['to-do', 'in-progress', 'done'],
     default: 'to-do'
   },
-  dueDate: Date, // when task is due
+  dueDate: {
+    type: Date,
+    required: true,
+    default: Date.now
+  },
   createdBy: {
     type: mongoose.Schema.Types.ObjectId, 
     ref: 'User'
   },
-  assignedTo: { // who is task assigned to
+  assignedTo: {
     type: mongoose.Schema.Types.ObjectId, 
     ref: 'User'
   },
-  createdAt: { // stores date and time task was created
+  createdAt: {
     type: Date,
     default: Date.now
   }
